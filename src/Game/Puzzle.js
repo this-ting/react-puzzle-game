@@ -38,6 +38,7 @@ class Puzzle extends Component {
     let clickedIndex = parseInt(e.target.className);
     let nextIndex = parseInt(e.target.className)+1;
     
+    
     // only when user submits name can they start game
     if (this.props.name !== '') {
       console.log('you may start')
@@ -56,15 +57,22 @@ class Puzzle extends Component {
           numbers[i] = clickedNumber;
         } else if (i === clickedIndex) {
           numbers[i] = '';
-        } 
-        console.log(numbers)
-        this.setState({ numbers })
+        }  
       }
-    
+
+      this.setState({ numbers })
+
       let clicks = this.state.clicks;
       clicks = clicks +1;
       this.setState({ clicks });
 
+      // check if correct
+      if(this.state.numbers == [1,2,3,4,5,6,7,'',8]) {
+        console.log('congrats you win!')
+      
+      } else {
+        console.log('no win')
+      }
 
     } else {
       return
