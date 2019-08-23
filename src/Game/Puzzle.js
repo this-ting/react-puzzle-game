@@ -33,8 +33,6 @@ class Puzzle extends Component {
 
   // gets current puzzle number and putputs into array
   handleClick = (e) => {
-    // console.log('value:', e.target.textContent);
-    // console.log('class:', e.target.className);
     let cell = Array.from(document.querySelectorAll('td'));
     let clickedNumber = parseInt(e.target.textContent);
     let clickedIndex = parseInt(e.target.className);
@@ -47,28 +45,22 @@ class Puzzle extends Component {
       return
     }
 
+
     // checks if the right of clicked is empty
     if ( cell[nextIndex].innerHTML === '' ) {
       console.log('to my right is empty');
+      console.log(clickedIndex)
       let numbers = this.state.numbers;
       for (let i = 0; i < numbers.length; i++ ) {
-        if ( i = clickedIndex ) {
-          numbers[i] = '';
-        } else if ( i = nextIndex ) {
-          
+        if ( i === nextIndex ) {
           numbers[i] = clickedNumber;
+        } else if (i === clickedIndex) {
+          numbers[i] = '';
         } 
         console.log(numbers)
+        this.setState({ numbers })
       }
-      
-
-      this.setState({ numbers })
-
-  
-
-
-
-  
+    
       let clicks = this.state.clicks;
       clicks = clicks +1;
       this.setState({ clicks });
